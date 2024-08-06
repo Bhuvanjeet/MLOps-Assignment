@@ -1,4 +1,3 @@
-import pytest
 from main import load_data, preprocess_data, train_model, evaluate_model
 
 
