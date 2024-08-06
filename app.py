@@ -20,8 +20,10 @@ def train_model():
     joblib.dump(model, 'model.joblib')
     joblib.dump(scaler, 'scaler.joblib')
 
+
 # Train the model when the application starts
 train_model()
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -33,6 +35,7 @@ def predict():
         features_scaled = scaler.transform(features)
         predictions = model.predict(features_scaled)
         return jsonify(predictions.tolist())
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
