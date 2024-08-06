@@ -7,6 +7,7 @@ import joblib
 
 app = Flask(__name__)
 
+
 # Load and train the model
 def train_model():
     data = load_iris()
