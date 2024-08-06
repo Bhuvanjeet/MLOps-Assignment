@@ -7,7 +7,10 @@ import joblib
 
 app = Flask(__name__)
 
+
 # Load and train the model
+
+
 def train_model():
     data = load_iris()
     X = data.data
@@ -20,14 +23,21 @@ def train_model():
     joblib.dump(scaler, 'scaler.joblib')
 
 # Train the model when the application starts
+
+
 train_model()
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
         data = request.get_json()
         features = pd.DataFrame(data)
+
+
         scaler = joblib.load('scaler.joblib')
+
+        
         model = joblib.load('model.joblib')
         features_scaled = scaler.transform(features)
         predictions = model.predict(features_scaled)
