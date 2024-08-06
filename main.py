@@ -16,11 +16,13 @@ def load_data():
 def preprocess_data(df):
     X = df.drop('target', axis=1)
     y = df['target']
-    X_tr,X_te,y_tr,y_te=train_test_split(X,y,test_size=0.2,random_state=42)
+    X_train, X_test, y_train, y_test = (
+        train_test_split(X, y, test_size=0.2, random_state=42)
+        )
     scaler = StandardScaler()
-    X_tr = scaler.fit_transform(X_tr)
-    X_te = scaler.transform(X_te)
-    return X_tr, X_te, y_tr, y_te
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+    return X_train, X_test, y_train, y_test
 
 
 def train_model(X_train, y_train):
