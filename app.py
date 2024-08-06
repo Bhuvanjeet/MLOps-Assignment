@@ -30,14 +30,12 @@ train_model()
 
 @app.route('/predict', methods=['POST'])
 def predict():
+
+
     if request.method == 'POST':
         data = request.get_json()
         features = pd.DataFrame(data)
-
-
         scaler = joblib.load('scaler.joblib')
-
-        
         model = joblib.load('model.joblib')
         features_scaled = scaler.transform(features)
         predictions = model.predict(features_scaled)
@@ -45,3 +43,4 @@ def predict():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
+
