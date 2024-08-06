@@ -31,7 +31,6 @@ train_model()
 @app.route('/predict', methods=['POST'])
 def predict():
 
-
     if request.method == 'POST':
         data = request.get_json()
         features = pd.DataFrame(data)
@@ -42,5 +41,5 @@ def predict():
         return jsonify(predictions.tolist())
 
 if __name__ == '__main__':
+    
     app.run(host='0.0.0.0', port=80)
-
